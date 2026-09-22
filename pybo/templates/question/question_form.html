@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h5 class="my-3 border-bottom pb-2">질문 등록</h5>
-    <form method="post" class="my-3" novalidate>
+    <form method="post" class="my-3" novalidate enctype="multipart/form-data">
         <!-- 브라우저에 있는 csrf_token확인 -->
         {{ form.csrf_token }}
         {% include 'form_errors.html' %}
@@ -12,7 +12,11 @@
         {{ form.subject(class='form-control mb-3') }}     <!-- <input type=" name"" id=""> -->
 
         {{ form.content.label }}  <!-- <label for="">내용</label> -->
-        {{ form.content(class='form-control', rows='5') }}      <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+        {{ form.content(class='form-control mb-3', rows='5') }}      <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+
+        {{ form.image.label }}
+        {{ form.image(class='form-control') }}  <!-- <input type="file" name="" id=""> -->
+
         {{ form.submit(class='btn btn-primary my-3') }}       <!-- <button type="submit">저장하기</button> -->
     </form>
 </div>
